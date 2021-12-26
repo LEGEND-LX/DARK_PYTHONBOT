@@ -11,7 +11,8 @@ ITS ALL CREDITS GOES TO LEGENDBOY.
 USERNAME = ⚜[LEGEND-OS](https://github.com/LEGEND-OS)
 <h3> ∂єρℓογ το нєяοκυ </h3>
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/LEGEND-LX/https://github.com/LEGEND-LX/DARK_PYTHONBOT)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/LEGEND-LX/DARK_PYTHONBOT)
+
 __________COMING_SOON_______
 <p><a href=https://github.com/LEGEND-LX/PYTHONBOT-V9.0.8> <img src="https://img.shields.io/badge/Deploy%20To%20Railway-blueviolet?style=for-the-badge&logo=railway" width="200""/></a></p>
 

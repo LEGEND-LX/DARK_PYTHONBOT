@@ -1,0 +1,48 @@
+
+
+_get_repolink () {
+    local regex
+    regex='(https?)://github.com/.+/.+'
+    if [[ $DARKPYTHON_REPO == "DARKPYTHONBOT" ]]
+    then
+        echo "aHR0cHM6Ly9naXRodWIuY29tL1RoZS1MZWdlbmRCb3QvTEVHRU5EVVNFUkJPVC9hcmNoaXZlL0xlZ2VuZEJvdC56aXA=" | base64 -d
+    elif [[ $DARKPYTHON_REPO == "DARKPYTHONBOT" ]]
+    then
+        echo "aHR0cHM6Ly9naXRodWIuY29tL1RoZS1MZWdlbmRCb3QvTEVHRU5EVVNFUkJPVC9hcmNoaXZlL0xlZ2VuZEJvdC56aXA=" | base64 -d
+    elif [[ $DARKPYTHON_REPO =~ $regex ]]
+    then
+        if [[ $DARKPYTHON_REPO_BRANCH ]]
+        then
+            echo "${DARKPYTHON_REPO}/archive/${DARKPYTHON_REPO_BRANCH}.zip"
+        else
+            echo "${DARKPYTHON_REPO}/archive/master.zip"
+        fi
+    else
+        echo "aHR0cHM6Ly9naXRodWIuY29tL1RoZS1MZWdlbmRCb3QvTEVHRU5EVVNFUkJPVC9hcmNoaXZlL0xlZ2VuZEJvdC56aXA=" | base64 -d
+    fi
+}
+
+
+_setting_bot () {
+    local zippath
+    zippath="Dark_PythonBot.zip"
+    echo "  Downloading Dark_PythonBot v9.0.8 Source Code..."
+    wget -q $(_get_repolink) -O "$zippath"
+    echo "  Unpacking Data ..."
+    DARKPYTHONPATH=$(zipinfo -1 "$zippath" | grep -v "/.");
+    unzip -qq "$zippath"
+    echo "Done"
+    echo "  Dark_PythonBot V9.0.8 Cleaning.."
+    rm -rf "$zippath"
+    sleep 5
+    cd $DARKPYTHONPATH
+    echo "    ⚜️Starting DARK_PYTHONBOT⚜️     "
+    echo "
+    🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳
+    "
+
+    python3 ../setup/updater.py ../requirements.txt requirements.txt
+    python3 -m userbot
+}
+
+_setting_bot
