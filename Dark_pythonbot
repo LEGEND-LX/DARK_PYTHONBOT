@@ -1,48 +1,49 @@
 
 
+
 _get_repolink () {
     local regex
     regex='(https?)://github.com/.+/.+'
-    if [[ $DARKPYTHON_REPO == "DARKPYTHONBOT" ]]
+    if [[ $PYTHON_REPO == "PYTHONBOT" ]]
     then
-        echo "aHR0cHM6Ly9naXRodWIuY29tL1RoZS1MZWdlbmRCb3QvTEVHRU5EVVNFUkJPVC9hcmNoaXZlL0xlZ2VuZEJvdC56aXA=" | base64 -d
-    elif [[ $DARKPYTHON_REPO == "DARKPYTHONBOT" ]]
+        echo "aHR0cHM6Ly9naXRodWIuY29tL0xFR0VORC1MWC9QWVRIT05VU0VSQk9UL2FyY2hpdmUvbWFpbi56aXA" | base64 -d
+    elif [[ $PYTHON_REPO == "PYTHONBOT" ]]
     then
-        echo "aHR0cHM6Ly9naXRodWIuY29tL1RoZS1MZWdlbmRCb3QvTEVHRU5EVVNFUkJPVC9hcmNoaXZlL0xlZ2VuZEJvdC56aXA=" | base64 -d
-    elif [[ $DARKPYTHON_REPO =~ $regex ]]
+        echo "aHR0cHM6Ly9naXRodWIuY29tL0xFR0VORC1MWC9QWVRIT05VU0VSQk9UL2FyY2hpdmUvbWFpbi56aXA" | base64 -d
+    elif [[ $PYTHON_REPO =~ $regex ]]
     then
-        if [[ $DARKPYTHON_REPO_BRANCH ]]
+        if [[ $PYTHON_REPO_BRANCH ]]
         then
-            echo "${DARKPYTHON_REPO}/archive/${DARKPYTHON_REPO_BRANCH}.zip"
+            echo "${PYTHON_REPO}/archive/${PYTHON_REPO_BRANCH}.zip"
         else
-            echo "${DARKPYTHON_REPO}/archive/master.zip"
+            echo "${PYTHON_REPO}/archive/master.zip"
         fi
     else
-        echo "aHR0cHM6Ly9naXRodWIuY29tL1RoZS1MZWdlbmRCb3QvTEVHRU5EVVNFUkJPVC9hcmNoaXZlL0xlZ2VuZEJvdC56aXA=" | base64 -d
+        echo "aHR0cHM6Ly9naXRodWIuY29tL0xFR0VORC1MWC9QWVRIT05VU0VSQk9UL2FyY2hpdmUvbWFpbi56aXA" | base64 -d
     fi
 }
 
 
-_setting_bot () {
+_set_bot () {
     local zippath
-    zippath="Dark_PythonBot.zip"
-    echo "  Downloading Dark_PythonBot v9.0.8 Source Code..."
+    zippath="PYTHONBOT.zip"
+    echo "  Downloading PythonBot V9.O.8 Source Code..."
     wget -q $(_get_repolink) -O "$zippath"
     echo "  Unpacking Data ..."
-    DARKPYTHONPATH=$(zipinfo -1 "$zippath" | grep -v "/.");
+    PYTHONPATH=$(zipinfo -1 "$zippath" | grep -v "/.");
     unzip -qq "$zippath"
     echo "Done"
-    echo "  Dark_PythonBot V9.0.8 Cleaning.."
+    echo "  PythonBot V9.O.8 Cleaning.."
     rm -rf "$zippath"
     sleep 5
-    cd $DARKPYTHONPATH
-    echo "    ⚜️Starting DARK_PYTHONBOT⚜️     "
+    cd $PYTHONPATH
+    echo "    🐍ѕταяτιиg ѕмοοτнєѕτ Python𝕭ø𝖙 V9.O.8🐍     "
     echo "
-    🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳
+    PYTHONBOT
     "
 
     python3 ../setup/updater.py ../requirements.txt requirements.txt
     python3 -m userbot
 }
 
-_setting_bot
+_set_bot
