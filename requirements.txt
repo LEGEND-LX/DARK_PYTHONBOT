@@ -2,6 +2,7 @@ motor>=2.3.1
 asyncurban
 aiohttp
 aiofiles
+redis
 a-pytube-fork-for-spotdl-users==9.6.4
 antispaminc==3.8
 apiclient==1.0.4
@@ -32,6 +33,7 @@ cffi==1.14.4
 click==7.1.2
 Command==0.1.0
 cryptography==3.2.1
+datetime
 DateTime
 deep_translator
 dnspython
@@ -104,7 +106,7 @@ spotdl
 sqlalchemy
 telegraph
 twitter_scraper
-telethon
+telethon==1.19.0
 tgcrypto
 tswift
 html-telegraph-poster
