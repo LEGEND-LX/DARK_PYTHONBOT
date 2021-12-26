@@ -1,1 +1,1 @@
-worker: bash LegendBot
+worker: bash DARK_PYTHONBOT
